@@ -20,8 +20,7 @@ BookFinder is a modern, responsive web application built with React and Vite tha
 - **📱 Fully Responsive**: Optimized experience across mobile, tablet, and desktop devices
 - **⚡ Blazing Fast Performance**: Built with Vite for optimal loading speeds and development experience
 - **🎨 Modern UI Design**: Clean, intuitive interface with Lucide React and Boxicons
-- **🔔 Notifications**: Interactive alerts for user actions
-
+- 
 ## 🛠️ Tech Stack
 
 ### Frontend Framework
@@ -41,3 +40,19 @@ BookFinder is a modern, responsive web application built with React and Vite tha
 - **Git** - Version control system
 
 ## 📂 Project Structure
+
+
+## ⚙️ Installation & Setup
+
+### Prerequisites
+- Node.js (version 14 or higher)
+- npm or yarn package manager
+- Git
+
+### Step-by-Step Installation
+
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/Sameeruddinansari/BookFinder.git
+   cd BookFinder
+   
