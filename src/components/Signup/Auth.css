@@ -1,0 +1,681 @@
+/* ===========================
+   Authentication Container & Backdrop
+=========================== */
+.auth-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 20px;
+  overflow-y: auto;
+  box-sizing: border-box;
+}
+
+/* Centered auth container */
+.auth-container {
+  position: relative;
+  background: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: 100%;
+  box-sizing: border-box;
+}
+
+.auth-container.dark {
+  background: transparent;
+}
+
+/* ===========================
+   Authentication Card - Compact Version
+=========================== */
+.auth-card {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  border-radius: 16px;
+  padding: 30px;
+  width: 100%;
+  max-width: 420px;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  transition: all 0.3s ease;
+  margin: auto;
+  box-sizing: border-box;
+  position: relative;
+}
+
+.auth-container.dark .auth-card {
+  background: rgba(52, 73, 94, 0.95);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+}
+
+/* ===========================
+   Header - More Compact
+=========================== */
+.auth-header {
+  text-align: center;
+  margin-bottom: 25px;
+}
+
+.auth-title {
+  font-size: 24px;
+  font-weight: 700;
+  margin: 0 0 8px 0;
+  background: linear-gradient(45deg, #3498db, #9b59b6);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.auth-container.dark .auth-title {
+  background: linear-gradient(45deg, #74b9ff, #a29bfe);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.auth-subtitle {
+  font-size: 14px;
+  color: #666;
+  margin: 0;
+  line-height: 1.4;
+}
+
+.auth-container.dark .auth-subtitle {
+  color: #bdc3c7;
+}
+
+/* ===========================
+   Form Styles - More Compact
+=========================== */
+.auth-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.form-label {
+  font-size: 13px;
+  font-weight: 600;
+  color: #2c3e50;
+  margin: 0;
+}
+
+.auth-container.dark .form-label {
+  color: #ecf0f1;
+}
+
+.form-input {
+  padding: 12px 14px;
+  border: 2px solid #e0e6ed;
+  border-radius: 10px;
+  font-size: 14px;
+  background: #fff;
+  color: #2c3e50;
+  transition: all 0.3s ease;
+  outline: none;
+  height: 44px;
+  box-sizing: border-box;
+  width: 100%;
+}
+
+.form-input:focus {
+  border-color: #3498db;
+  box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.1);
+}
+
+.form-input.error {
+  border-color: #e74c3c;
+  box-shadow: 0 0 0 3px rgba(231, 76, 60, 0.1);
+}
+
+.auth-container.dark .form-input {
+  background: rgba(52, 73, 94, 0.8);
+  border-color: #34495e;
+  color: #ecf0f1;
+}
+
+.auth-container.dark .form-input:focus {
+  border-color: #74b9ff;
+  box-shadow: 0 0 0 3px rgba(116, 185, 255, 0.1);
+}
+
+.auth-container.dark .form-input.error {
+  border-color: #ff7675;
+  box-shadow: 0 0 0 3px rgba(255, 118, 117, 0.1);
+}
+
+.form-input::placeholder {
+  color: #a0a0a0;
+  font-size: 14px;
+}
+
+.auth-container.dark .form-input::placeholder {
+  color: #7f8c8d;
+}
+
+/* ===========================
+   Error Messages - Compact
+=========================== */
+.error-message {
+  font-size: 12px;
+  color: #e74c3c;
+  margin-top: 4px;
+  display: block;
+}
+
+.auth-container.dark .error-message {
+  color: #ff7675;
+}
+
+/* Form-wide error messages */
+.auth-form .error-message {
+  text-align: center;
+  margin-bottom: 12px;
+  padding: 8px;
+  background: rgba(231, 76, 60, 0.1);
+  border-radius: 6px;
+  border: 1px solid rgba(231, 76, 60, 0.2);
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.auth-container.dark .auth-form .error-message {
+  background: rgba(255, 118, 117, 0.1);
+  border-color: rgba(255, 118, 117, 0.2);
+}
+
+/* ===========================
+   Form Options - Compact
+=========================== */
+.form-options {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 8px 0;
+}
+
+.checkbox-label {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  font-size: 13px;
+  color: #555;
+  line-height: 1.3;
+}
+
+.auth-container.dark .checkbox-label {
+  color: #bdc3c7;
+}
+
+.checkbox {
+  width: 14px;
+  height: 14px;
+  accent-color: #3498db;
+  margin: 0;
+  flex-shrink: 0;
+}
+
+.auth-container.dark .checkbox {
+  accent-color: #74b9ff;
+}
+
+.checkbox-text {
+  user-select: none;
+  font-size: 13px;
+}
+
+.forgot-link {
+  font-size: 13px;
+  color: #3498db;
+  text-decoration: none;
+  transition: color 0.3s ease;
+  white-space: nowrap;
+}
+
+.forgot-link:hover {
+  color: #2980b9;
+  text-decoration: underline;
+}
+
+.auth-container.dark .forgot-link {
+  color: #74b9ff;
+}
+
+.auth-container.dark .forgot-link:hover {
+  color: #0984e3;
+}
+
+/* ===========================
+   Buttons - Compact
+=========================== */
+.auth-button {
+  padding: 14px 20px;
+  border: none;
+  border-radius: 10px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  outline: none;
+  margin-top: 8px;
+  height: 46px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.auth-button.primary {
+  background: linear-gradient(45deg, #3498db, #9b59b6);
+  color: white;
+  box-shadow: 0 3px 12px rgba(52, 152, 219, 0.3);
+}
+
+.auth-button.primary:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px rgba(52, 152, 219, 0.4);
+}
+
+.auth-button.primary:active {
+  transform: translateY(0);
+}
+
+.auth-container.dark .auth-button.primary {
+  background: linear-gradient(45deg, #74b9ff, #a29bfe);
+  box-shadow: 0 3px 12px rgba(116, 185, 255, 0.3);
+}
+
+.auth-container.dark .auth-button.primary:hover {
+  box-shadow: 0 6px 20px rgba(116, 185, 255, 0.4);
+}
+
+/* ===========================
+   Footer - Compact
+=========================== */
+.auth-footer {
+  text-align: center;
+  margin-top: 25px;
+  padding-top: 18px;
+  border-top: 1px solid #e0e6ed;
+}
+
+.auth-container.dark .auth-footer {
+  border-top-color: #34495e;
+}
+
+.auth-switch {
+  font-size: 13px;
+  color: #666;
+  margin: 0;
+  line-height: 1.4;
+}
+
+.auth-container.dark .auth-switch {
+  color: #bdc3c7;
+}
+
+.auth-link {
+  color: #3498db;
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.3s ease;
+  background: none;
+  border: none;
+  padding: 0;
+  font-size: inherit;
+  cursor: pointer;
+  display: inline;
+}
+
+.auth-link:hover {
+  color: #2980b9;
+  text-decoration: underline;
+}
+
+.auth-container.dark .auth-link {
+  color: #74b9ff;
+}
+
+.auth-container.dark .auth-link:hover {
+  color: #0984e3;
+}
+
+/* ===========================
+   Success Messages
+=========================== */
+.success-message {
+  text-align: center;
+  margin-bottom: 12px;
+  padding: 8px;
+  background: rgba(46, 204, 113, 0.1);
+  border-radius: 6px;
+  border: 1px solid rgba(46, 204, 113, 0.2);
+  color: #27ae60;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.auth-container.dark .success-message {
+  background: rgba(46, 204, 113, 0.15);
+  border-color: rgba(46, 204, 113, 0.3);
+  color: #2ecc71;
+}
+
+/* ===========================
+   Loading States
+=========================== */
+.auth-button.loading {
+  position: relative;
+  color: transparent;
+}
+
+.auth-button.loading::after {
+  content: "";
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  top: 50%;
+  left: 50%;
+  margin: -9px 0 0 -9px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  border-top-color: white;
+  animation: spin 1s ease-in-out infinite;
+}
+
+.auth-container.dark .auth-button.loading::after {
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-top-color: white;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* ===========================
+   Close Button
+=========================== */
+.auth-close {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: none;
+  border: none;
+  font-size: 20px;
+  color: #999;
+  cursor: pointer;
+  padding: 4px;
+  border-radius: 50%;
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  z-index: 10;
+}
+
+.auth-close:hover {
+  background: rgba(0, 0, 0, 0.05);
+  color: #666;
+}
+
+.auth-container.dark .auth-close {
+  color: #bdc3c7;
+}
+
+.auth-container.dark .auth-close:hover {
+  background: rgba(255, 255, 255, 0.05);
+  color: #ecf0f1;
+}
+
+/* ===========================
+   Password Strength Indicator
+=========================== */
+.password-strength {
+  margin-top: 4px;
+  height: 3px;
+  border-radius: 2px;
+  background: #eee;
+  overflow: hidden;
+}
+
+.strength-bar {
+  height: 100%;
+  transition: all 0.3s ease;
+}
+
+.strength-weak {
+  background: #e74c3c;
+  width: 33%;
+}
+
+.strength-medium {
+  background: #f39c12;
+  width: 66%;
+}
+
+.strength-strong {
+  background: #27ae60;
+  width: 100%;
+}
+
+.password-strength-text {
+  font-size: 11px;
+  margin-top: 3px;
+  color: #666;
+}
+
+.auth-container.dark .password-strength-text {
+  color: #bdc3c7;
+}
+
+/* ===========================
+   Scrollable Auth for Small Screens
+=========================== */
+@media (max-height: 600px) {
+  .auth-backdrop {
+    align-items: flex-start;
+    padding-top: 40px;
+    padding-bottom: 40px;
+  }
+
+  .auth-card {
+    max-height: 90vh;
+    overflow-y: auto;
+  }
+}
+
+/* ===========================
+   Enhanced Responsive Design
+=========================== */
+@media (max-width: 480px) {
+  .auth-backdrop {
+    padding: 10px;
+  }
+
+  .auth-container {
+    padding: 5px;
+  }
+
+  .auth-card {
+    padding: 20px 15px;
+    margin: 0;
+    border-radius: 12px;
+  }
+
+  .auth-title {
+    font-size: 20px;
+    margin-bottom: 5px;
+  }
+
+  .auth-subtitle {
+    font-size: 12px;
+  }
+
+  .auth-form {
+    gap: 14px;
+  }
+
+  .form-group {
+    gap: 5px;
+  }
+
+  .form-label {
+    font-size: 12px;
+  }
+
+  .form-input {
+    padding: 10px 12px;
+    font-size: 13px;
+    height: 40px;
+    border-radius: 8px;
+  }
+
+  .form-options {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+    margin: 5px 0;
+  }
+
+  .checkbox-label {
+    font-size: 12px;
+  }
+
+  .checkbox {
+    width: 13px;
+    height: 13px;
+  }
+
+  .checkbox-text {
+    font-size: 12px;
+  }
+
+  .forgot-link {
+    font-size: 12px;
+  }
+
+  .auth-button {
+    padding: 12px 16px;
+    font-size: 14px;
+    height: 42px;
+    border-radius: 8px;
+    margin-top: 5px;
+  }
+
+  .auth-footer {
+    margin-top: 20px;
+    padding-top: 15px;
+  }
+
+  .auth-switch {
+    font-size: 12px;
+  }
+
+  .auth-close {
+    top: 10px;
+    right: 10px;
+    font-size: 18px;
+    width: 25px;
+    height: 25px;
+  }
+
+  .error-message {
+    font-size: 11px;
+  }
+
+  .auth-form .error-message {
+    font-size: 12px;
+    padding: 6px;
+    margin-bottom: 10px;
+  }
+}
+
+@media (max-width: 320px) {
+  .auth-card {
+    padding: 15px 12px;
+  }
+
+  .auth-title {
+    font-size: 18px;
+  }
+
+  .auth-subtitle {
+    font-size: 11px;
+  }
+
+  .form-input {
+    padding: 8px 10px;
+    font-size: 12px;
+    height: 38px;
+  }
+
+  .auth-button {
+    padding: 10px 14px;
+    font-size: 13px;
+    height: 40px;
+  }
+}
+
+/* ===========================
+   Smooth Theme Transitions
+=========================== */
+.auth-card,
+.auth-title,
+.auth-subtitle,
+.form-input,
+.form-label,
+.checkbox-label,
+.auth-switch,
+.auth-link {
+  transition: all 0.3s ease;
+}
+
+/* ===========================
+   Accessibility Improvements
+=========================== */
+.auth-close:focus,
+.auth-button:focus,
+.form-input:focus,
+.auth-link:focus {
+  outline: 2px solid #3498db;
+  outline-offset: 2px;
+}
+
+.auth-container.dark .auth-close:focus,
+.auth-container.dark .auth-button:focus,
+.auth-container.dark .form-input:focus,
+.auth-container.dark .auth-link:focus {
+  outline-color: #74b9ff;
+}
+
+/* ===========================
+   Prevent horizontal scrolling
+=========================== */
+html,
+body {
+  overflow-x: hidden;
+}
+
+.auth-backdrop {
+  overflow: hidden;
+}

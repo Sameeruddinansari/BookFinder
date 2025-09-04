@@ -1,0 +1,285 @@
+:root {
+  /* Light Mode */
+  --bg-primary: linear-gradient(135deg, #ffffff 0%, #ffffff 100%);
+  --bg-secondary: rgba(255, 255, 255);
+  --text-primary: #000000;
+  --text-secondary: #444444;
+  --border-color: rgba(169, 165, 165, 0.2);
+  --button-bg: rgba(0, 0, 0, 0.05);
+  --button-hover-bg: rgba(0, 0, 0, 0.1);
+  --hover-bg: rgba(0, 0, 0, 0.03);
+  --sidebar-bg: rgba(255, 255, 255, 0.95);
+  --header-bg: rgba(0, 0, 0, 0.1);
+  --history-item-bg: rgba(250, 250, 250, 0.05);
+  --history-item-hover-bg: rgba(250, 242, 242, 0.1);
+}
+
+[data-theme="dark"] {
+  --bg-primary: #000000;
+  --bg-secondary: #111111;
+  --text-primary: #ffffff;
+  --text-secondary: #f9f3f3;
+  --border-color: rgba(93, 91, 91, 0.2);
+  --button-bg: rgba(255, 255, 255, 0.1);
+  --button-hover-bg: rgba(255, 255, 255, 0.2);
+  --hover-bg: rgba(255, 255, 255, 0.05);
+  --sidebar-bg: #0d0d0d;
+  --header-bg: #111111;
+  --history-item-bg: rgba(255, 255, 255, 0.05);
+  --history-item-hover-bg: rgba(255, 255, 255, 0.1);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+  overflow-x: hidden;
+}
+
+body {
+  font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: var(--bg-primary);
+  min-height: 100vh;
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+/* App Layout */
+.app {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+/* Top Bar */
+.top-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 60px;
+  background: var(--header-bg);
+  border-bottom: 1px solid var(--border-color);
+  z-index: 1000;
+  backdrop-filter: blur(10px);
+}
+
+/* Main Content */
+.main-content {
+  flex: 1;
+  margin-top: 60px;
+  /* TopBar height */
+  padding: 20px;
+  min-height: calc(100vh - 120px);
+  /* Adjust for TopBar and Footer */
+  transition: all 0.3s ease;
+  width: 100%;
+}
+
+/* When sidebar is open, shift main content */
+.sidebar-open .main-content {
+  margin-left: 300px;
+  width: calc(100% - 300px);
+}
+
+/* Footer */
+.app>footer {
+  position: relative;
+  z-index: 99;
+  margin-top: auto;
+  transition: all 0.3s ease;
+}
+
+/* When sidebar is open, shift footer */
+.sidebar-open>footer {
+  margin-left: 300px;
+  width: calc(100% - 300px);
+}
+
+/* Sidebar Styles (already in your sidebar.css) */
+.sidebar {
+  position: fixed;
+  top: 60px;
+  left: 0;
+  height: calc(100vh - 60px);
+  width: 300px;
+  background: var(--sidebar-bg);
+  border-right: 1px solid var(--border-color);
+  z-index: 1000;
+  transform: translateX(-100%);
+  transition: transform 0.3s ease;
+  overflow-y: auto;
+  scrollbar-width: none;
+  box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.sidebar.open {
+  transform: translateX(0);
+  box-shadow: 5px 0 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Mobile Overlay */
+.sidebar-overlay {
+  position: fixed;
+  top: 60px;
+  left: 0;
+  width: 100%;
+  height: calc(100% - 60px);
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+  display: none;
+}
+
+/* Saved Books View */
+.saved-books-view {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.saved-books-view h2 {
+  color: var(--text-primary);
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.saved-books-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 20px;
+}
+
+.no-saved-books {
+  text-align: center;
+  color: var(--text-secondary);
+  padding: 40px 20px;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+  .main-content {
+    padding: 15px;
+    margin-left: 0 !important;
+    width: 100% !important;
+  }
+
+  .sidebar-open .main-content {
+    margin-left: 0 !important;
+    width: 100% !important;
+  }
+
+  .app>footer {
+    margin-left: 0 !important;
+    width: 100% !important;
+  }
+
+  .sidebar-open>footer {
+    margin-left: 0 !important;
+    width: 100% !important;
+  }
+
+  .sidebar {
+    width: 85%;
+    max-width: 280px;
+  }
+
+  /* Mobile overlay */
+  .sidebar-open::before {
+    content: '';
+    position: fixed;
+    top: 60px;
+    left: 0;
+    width: 100%;
+    height: calc(100% - 60px);
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+  }
+
+  .saved-books-grid {
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 15px;
+  }
+}
+
+@media (max-width: 480px) {
+  .main-content {
+    padding: 10px;
+  }
+
+  .sidebar {
+    width: 100%;
+    max-width: none;
+    border-right: none;
+    box-shadow: none;
+  }
+
+  .saved-books-view {
+    padding: 15px;
+  }
+
+  .saved-books-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+}
+
+/* Scrollbar Styling */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-secondary);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border-color);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--text-secondary);
+}
+
+/* Utility Classes */
+.hidden {
+  display: none !important;
+}
+
+.visible {
+  display: block !important;
+}
+
+/* Animation for smooth transitions */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in {
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+/* Ensure content doesn't get hidden behind sidebar */
+@media (min-width: 769px) {
+
+  .main-content,
+  .app>footer {
+    transition: margin-left 0.3s ease, width 0.3s ease;
+  }
+}
