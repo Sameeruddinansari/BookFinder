@@ -1,6 +1,6 @@
 import React, { useState, useRef } from "react";
 import "./TopBar.css";
-import { Settings, SquarePen, LogOut, Menu } from "lucide-react";
+import { Settings, SquarePen, LogOut, Menu, SunMedium, MoonStar } from "lucide-react";
 import Signup from "../Signup/Signup";
 import Login from "../Signup/Login";
 
@@ -76,9 +76,9 @@ export default function TopBar({
         {/* 🌙 Dark mode toggle */}
         <button className="dark-mode-toggle" onClick={onToggleDarkMode}>
           {darkMode ? (
-            <i className="bx bx-sun"></i>
+            <SunMedium size={25} />
           ) : (
-            <i className="bx bx-moon"></i>
+            <MoonStar size={25} strokeWidth={2} />
           )}
         </button>
 

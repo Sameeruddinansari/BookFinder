@@ -4,7 +4,7 @@ import { useUserData } from '../../contexts/UserDataContext';
 import './ReadingListManager.css';
 import { FileOutput } from "lucide-react"
 
-export default function ReadingListManager({ userData, onCreateList, onAddToList, onRemoveFromList, onBookClick }) {
+export default function ReadingListManager({ userData, onCreateList, onBookClick }) {
   const { exportReadingLists } = useUserData();
   const [showCreateForm, setShowCreateForm] = useState(false);
   const [newListName, setNewListName] = useState('');
@@ -36,7 +36,7 @@ export default function ReadingListManager({ userData, onCreateList, onAddToList
             className="export-btn"
             onClick={exportReadingLists}
           >
-            <file-output /> Export Lists
+            <FileOutput /> Export Lists
           </button>
         </div>
       </div>

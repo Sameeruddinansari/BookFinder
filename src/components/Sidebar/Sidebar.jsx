@@ -1,7 +1,6 @@
 import React from 'react';
 import './Sidebar.css';
-import { LogIn } from "lucide-react";
-
+import { LogIn, BookCopy, Search, BookUser, Sparkles, Target } from "lucide-react";
 
 export default function Sidebar({
   isOpen,
@@ -30,7 +29,7 @@ export default function Sidebar({
             className={`nav-item ${currentView === 'search' ? 'active' : ''}`}
             onClick={() => onViewChange('search')}
           >
-            <span className="nav-icon"><i className='bx bx-search'></i></span>
+            <span className="nav-icon"><Search size={18} /></span>
             <span>Search Books</span>
           </button>
 
@@ -38,7 +37,7 @@ export default function Sidebar({
             className={`nav-item ${currentView === 'recommendations' ? 'active' : ''}`}
             onClick={() => onViewChange('recommendations')}
           >
-            <span className="nav-icon"><i className='bx bx-star'></i></span>
+            <span className="nav-icon"><Sparkles size={18} /></span>
             <span>Recommendations</span>
           </button>
 
@@ -46,7 +45,7 @@ export default function Sidebar({
             className={`nav-item ${currentView === 'saved-books' ? 'active' : ''}`}
             onClick={() => onViewChange('saved-books')}
           >
-            <span className="nav-icon"><i className='bx bx-bookmarks'></i></span>
+            <span className="nav-icon"><BookCopy size={18} /></span>
             <span>Saved Books</span>
           </button>
 
@@ -54,7 +53,7 @@ export default function Sidebar({
             className={`nav-item ${currentView === 'reading-lists' ? 'active' : ''}`}
             onClick={() => onViewChange('reading-lists')}
           >
-            <span className="nav-icon"><i className='bx bx-book'></i></span>
+            <span className="nav-icon"><BookUser size={18} /></span>
             <span>Reading Lists</span>
           </button>
 
@@ -62,7 +61,7 @@ export default function Sidebar({
             className={`nav-item ${currentView === 'reading-goals' ? 'active' : ''}`}
             onClick={() => onViewChange('reading-goals')}
           >
-            <span className="nav-icon"><i className='bx bx-calendar-star'></i></span>
+            <span className="nav-icon"><Target size={18} /></span>
             <span>Reading Goals</span>
           </button>
         </nav>

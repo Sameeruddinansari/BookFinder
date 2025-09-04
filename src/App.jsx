@@ -9,7 +9,6 @@ import BookCard from './components/BookCard/BookCard';
 import { UserDataProvider, useUserData } from './contexts/UserDataContext';
 import './App.css';
 import Footer from './components/Footer/Footer'
-import 'boxicons/css/boxicons.min.css';
 
 
 function AppContent() {
