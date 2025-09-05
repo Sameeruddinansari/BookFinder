@@ -21,16 +21,12 @@ export default function BookModal({ book, isOpen, onClose }) {
 
   const [showAddToList, setShowAddToList] = useState(false);
 
-  // ✅ Community rating stable rakho
   const [communityRating, setCommunityRating] = useState(null);
 
-  // Track recently viewed books when modal opens
   useEffect(() => {
     if (isOpen && book) {
       addToRecentlyViewed(book);
-
-      // sirf ek baar rating set karo
-      setCommunityRating((Math.random() * 2 + 3).toFixed(1));
+      setCommunityRating(4.3);
     }
   }, [isOpen, book, addToRecentlyViewed]);
 
