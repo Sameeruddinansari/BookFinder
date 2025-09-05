@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+
+import React, { useState, useEffect } from 'react';
 import BookRating from '../BookRating/BookRating';
 import ReadingProgress from '../ReadingProgress/ReadingProgress';
 import SocialFeatures from '../SocialFeatures/SocialFeatures';
@@ -20,10 +21,16 @@ export default function BookModal({ book, isOpen, onClose }) {
 
   const [showAddToList, setShowAddToList] = useState(false);
 
+  // ✅ Community rating stable rakho
+  const [communityRating, setCommunityRating] = useState(null);
+
   // Track recently viewed books when modal opens
-  React.useEffect(() => {
+  useEffect(() => {
     if (isOpen && book) {
       addToRecentlyViewed(book);
+
+      // sirf ek baar rating set karo
+      setCommunityRating((Math.random() * 2 + 3).toFixed(1));
     }
   }, [isOpen, book, addToRecentlyViewed]);
 
@@ -53,10 +60,6 @@ export default function BookModal({ book, isOpen, onClose }) {
 
   const getOpenLibraryUrl = (book) => {
     return book.key ? `https://openlibrary.org${book.key}` : null;
-  };
-
-  const getRandomRating = () => {
-    return (Math.random() * 2 + 3).toFixed(1); // Random rating between 3.0 and 5.0
   };
 
   return (
@@ -147,11 +150,15 @@ export default function BookModal({ book, isOpen, onClose }) {
               <div className="ratings-section">
                 <div className="community-rating">
                   <span className="rating-label">Community Rating:</span>
-                  <div className="stars">
-                    {'★'.repeat(Math.floor(getRandomRating()))}
-                    {'☆'.repeat(5 - Math.floor(getRandomRating()))}
-                  </div>
-                  <span className="rating-text">{getRandomRating()}/5.0</span>
+                  {communityRating && (
+                    <>
+                      <div className="stars">
+                        {'★'.repeat(Math.floor(communityRating))}
+                        {'☆'.repeat(5 - Math.floor(communityRating))}
+                      </div>
+                      <span className="rating-text">{communityRating}/5.0</span>
+                    </>
+                  )}
                 </div>
 
                 <div className="user-rating">
