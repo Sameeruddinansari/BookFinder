@@ -21,7 +21,6 @@ export default function Login({ onSwitchToSignup, onUpdateProfile, onClose }) {
   const handleSubmit = (e) => {
     e.preventDefault()
 
-    // Get all users from localStorage
     const users = JSON.parse(localStorage.getItem('bookfinder-users') || '{}')
     const user = users[formData.email]
 
