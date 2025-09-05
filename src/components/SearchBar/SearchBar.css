@@ -29,7 +29,6 @@
   font-size: 1rem;
   background: var(--button-bg);
   color: var(--text-primary);
-  /* ✅ ye select ke text ke liye */
   cursor: pointer;
   transition: all 0.3s ease;
 }
@@ -37,7 +36,6 @@
 .search-type option {
   background: var(--bg-secondary);
   color: var(--text-primary);
-  /* ✅ option ke text ke liye */
 }
 
 
