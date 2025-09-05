@@ -50,7 +50,6 @@ body {
   flex-direction: column;
 }
 
-/* App Layout */
 .app {
   display: flex;
   flex-direction: column;
@@ -59,7 +58,7 @@ body {
   transition: all 0.3s ease;
 }
 
-/* Top Bar */
+
 .top-bar {
   position: fixed;
   top: 0;
@@ -72,39 +71,32 @@ body {
   backdrop-filter: blur(10px);
 }
 
-/* Main Content */
 .main-content {
   flex: 1;
   margin-top: 60px;
-  /* TopBar height */
   padding: 20px;
   min-height: calc(100vh - 120px);
-  /* Adjust for TopBar and Footer */
   transition: all 0.3s ease;
   width: 100%;
 }
 
-/* When sidebar is open, shift main content */
+
 .sidebar-open .main-content {
   margin-left: 300px;
   width: calc(100% - 300px);
 }
 
-/* Footer */
 .app>footer {
   position: relative;
   z-index: 99;
   margin-top: auto;
   transition: all 0.3s ease;
 }
-
-/* When sidebar is open, shift footer */
 .sidebar-open>footer {
   margin-left: 300px;
   width: calc(100% - 300px);
 }
 
-/* Sidebar Styles (already in your sidebar.css) */
 .sidebar {
   position: fixed;
   top: 60px;
@@ -126,7 +118,6 @@ body {
   box-shadow: 5px 0 15px rgba(0, 0, 0, 0.1);
 }
 
-/* Mobile Overlay */
 .sidebar-overlay {
   position: fixed;
   top: 60px;
@@ -138,7 +129,6 @@ body {
   display: none;
 }
 
-/* Saved Books View */
 .saved-books-view {
   max-width: 1200px;
   margin: 0 auto;
@@ -163,7 +153,6 @@ body {
   padding: 40px 20px;
 }
 
-/* Mobile Responsiveness */
 @media (max-width: 768px) {
   .main-content {
     padding: 15px;
@@ -191,7 +180,6 @@ body {
     max-width: 280px;
   }
 
-  /* Mobile overlay */
   .sidebar-open::before {
     content: '';
     position: fixed;
@@ -231,7 +219,6 @@ body {
   }
 }
 
-/* Scrollbar Styling */
 ::-webkit-scrollbar {
   width: 8px;
 }
@@ -249,7 +236,6 @@ body {
   background: var(--text-secondary);
 }
 
-/* Utility Classes */
 .hidden {
   display: none !important;
 }
@@ -258,7 +244,6 @@ body {
   display: block !important;
 }
 
-/* Animation for smooth transitions */
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -275,7 +260,6 @@ body {
   animation: fadeIn 0.3s ease-in-out;
 }
 
-/* Ensure content doesn't get hidden behind sidebar */
 @media (min-width: 769px) {
 
   .main-content,
