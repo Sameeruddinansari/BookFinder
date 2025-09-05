@@ -26,7 +26,7 @@ export default function BookModal({ book, isOpen, onClose }) {
   useEffect(() => {
     if (isOpen && book) {
       addToRecentlyViewed(book);
-       setCommunityRating((Math.random() * 2 + 3).toFixed(1));
+      setCommunityRating(4.2);
     }
   }, [isOpen, book, addToRecentlyViewed]);
 
